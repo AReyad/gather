@@ -1,0 +1,20 @@
+<header>
+    <h1><%= link_to "gather", root_path %></h1>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+        <li><%= link_to "New Event", new_event_path%></li>
+        <li>
+          <%= current_user.username %>
+          <ul>
+            <li><%= link_to "Your profile", current_user %></li>
+            <li><%= link_to "Sign out", signout_path, method: :delete, data: { turbo: false } %></li>
+          </ul>
+        </li>
+        <% else %>
+        <li> <%= link_to "Sign in", signin_path%> </li>
+        <li> <%= link_to "Sign up", signup_path%> </li>
+        <%end %>
+      </ul>
+    </nav>
+</header>

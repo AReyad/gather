@@ -7,7 +7,7 @@
         <li>
           <%= pretty_username(current_user.username) %>
           <ul>
-            <li><%= link_to "Your profile", current_user.username %></li>
+            <li><%= link_to "Your profile", user_path(current_user.username) %></li>
             <li><%= button_to "Sign out", signout_path, method: :delete, data: { turbo: false } %></li>
           </ul>
         </li>

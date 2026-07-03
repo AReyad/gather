@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post "signup", to: "devise/registrations#create"
   end
 
-  get "/:username" => "users#show", constraints: { username: /[a-zA-Z-0-9]+/ }, as: "user"
+  get "/:username" => "users#show", constraints: { username: /[a-zA-Z0-9]+/ }, as: "user"
   resources :events, only: [ :new, :index, :create ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

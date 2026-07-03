@@ -1,7 +1,7 @@
 module UsersHelper
   def display_user_events_header(events)
     host_username = event_host(@events.first)
-    if host_username == current_user.username
+    if current_user && host_username == current_user.username
      "Your events"
     else
      "#{pretty_username(host_username)}'s events"

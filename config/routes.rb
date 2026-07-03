@@ -4,13 +4,14 @@ Rails.application.routes.draw do
   devise_scope :user do
     get "signin", to: "devise/sessions#new"
     post "signin", to: "devise/sessions#create"
-    get "signout", to: "devise/sessions#destroy"
+    delete "signout", to: "devise/sessions#destroy"
     get "signup", to: "devise/registrations#new"
     post "signup", to: "devise/registrations#create"
   end
 
-  resources :users, only: [ :show ]
-  resources :events, only: [ :new ]
+  get "/:username" => "users#show", constraints: { username: /[a-zA-Z-0-9]+/ }, as: "user"
+  resources :events, only: [ :new, :index, :create ]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

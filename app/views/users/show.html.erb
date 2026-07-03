@@ -1,4 +1,5 @@
+<% events_header = display_user_events_header(@events) %>
 <% @events.each do |event|%>
-<h2><%= event.host.username %>'s events</h2>
+<h2><%= events_header %></h2>
   <%= render "/event_card", event: event %>
 <%end %>

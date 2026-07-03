@@ -1,1 +1,28 @@
 <h2>Create a new event</h2>
+  <%= render "users/shared/error_messages", resource: @event %>
+<%= form_with model: @event do |form|%>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.time_field :time %>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Cancel", root_path %>
+    <%= form.submit "Publish event" %>
+  </div>
+<% end %>

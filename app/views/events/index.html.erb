@@ -1,1 +1,5 @@
 <h2>A list of all events</h2>
+<% @events.each do |event| %>
+  <%= render "/event_card", event: event %>
+  <%= link_to pretty_event_host(event), event_host(event) %>
+<% end %>

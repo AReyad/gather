@@ -19,7 +19,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_02_174011) do
     t.date "date"
     t.string "description"
     t.bigint "host_id", null: false
-    t.time "time"
+    t.string "time"
     t.string "title"
     t.datetime "updated_at", null: false
     t.index ["host_id"], name: "index_events_on_host_id"

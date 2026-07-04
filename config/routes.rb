@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     post "signup", to: "devise/registrations#create"
   end
 
-  get "/:username" => "users#show", constraints: { username: /[a-zA-Z0-9]+/ }, as: "user"
-  resources :events, only: [ :new, :index, :create ]
+  get "/@:username", to: "users#show", constraints: { username: /[a-zA-Z0-9]+/ }, as: "user"
+  get "/@:username/events/:id", to: "events#show", as: "user_event"
+  post "/@:username/events/:id/attend_event", to: "event_attendings#create", as: "attend_event"
+
+  resources :events, only: [ :new, :create, :index ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

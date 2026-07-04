@@ -29,6 +29,7 @@ class EventsController < ApplicationController
   end
 
   def set_event
-    @event = Event.includes(:attendees).find(params[:id])
+    @user = User.find_by!(username: params[:username])
+    @event = @user.hosted_events.includes(:attendees).find(params[:id])
   end
 end

@@ -11,10 +11,10 @@ class Event < ApplicationRecord
   validates :time, presence: true, format: { with: /\d{2}:\d{2}/, message: "must be valid time e.g. 12:00" }
 
   def self.past_event
-    self.where("date <= ?", Date.today).where("time > ?", Time.current.strftime("%H:%M"))
+    where("date < ?", Date.today) || where("date == ?", Date.today).and(where("time < ?", Time.current.strftime("%H:%M")))
   end
 
   def self.upcoming_event
-    self.where("date >= ?", Date.today).where("time < ?", Time.current.strftime("%H:%M"))
+    where("date > ?", Date.today) || where("date == ?", Date.today).and(where("time > ?", Time.current.strftime("%H:%M")))
   end
 end

@@ -10,11 +10,11 @@ class Event < ApplicationRecord
   validates :date, comparison: { less_than: 125.years.from_now.to_date, message: "must be less than 125 years from now" }
   validates :time, presence: true, format: { with: /\d{2}:\d{2}/, message: "must be valid time e.g. 12:00" }
 
-  def self.past_event
+  def self.past
     where("date < ?", Date.today) || where("date == ?", Date.today).and(where("time < ?", Time.current.strftime("%H:%M")))
   end
 
-  def self.upcoming_event
-    where("date > ?", Date.today) || where("date == ?", Date.today).and(where("time > ?", Time.current.strftime("%H:%M")))
+  def self.upcoming
+    where("date > ?", Date.today) || where("date >= ?", Date.today).and(where("time > ?", Time.current.strftime("%H:%M")))
   end
 end

@@ -1,0 +1,17 @@
+<div class="event-body">
+  <h2><%= @event.title %></h2>
+  <p><%= @event.description %></p>
+</div>
+<div class="event-details">
+  <div class="event-date"><%= @event.date %></div>
+  <div class="event-time"><%= @event.time %></div>
+  <div class="event-location"><%= @event.location %></div>
+  <div class="event-date"><%= @event.date %></div>
+  <%= link_to pretty_username(@user.username), user_path(@user.username) %>
+  <%= attend_event_button %>
+</div>
+<div class="event-attendees">
+  <% @event.attendees.each do |attendee| %>
+  <p><%= attendee.username %></p>
+  <% end %>
+</div>

@@ -11,6 +11,9 @@ class Event < ApplicationRecord
   validates :date, comparison: { less_than: 125.years.from_now.to_date, message: "must be less than 125 years from now" }
   validates :time, presence: true, format: { with: /\d{2}:\d{2}/, message: "must be valid time e.g. 12:00" }
 
+  enum :privacy, [ :public, :private ], default: :public, suffix: :event
+
+  default_scope { order(created_at: :desc) }
   scope :past, -> { where("date < ?", Date.today) || where("date == ?", Date.today).and(where("time < ?", Time.current.strftime("%H:%M"))) }
   scope :upcoming, -> { where("date > ?", Date.today) || where("date >= ?", Date.today).and(where("time > ?", Time.current.strftime("%H:%M"))) }
 end

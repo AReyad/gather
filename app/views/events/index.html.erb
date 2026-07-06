@@ -1,5 +1,2 @@
 <h2>A list of all events</h2>
-<% @events.each do |event| %>
-  <%= render "/event_card", event: event %>
-  <%= link_to pretty_event_host(event), user_path(event_host(event)) %>
-<% end %>
+<%= render "/categorized_events", past_events: @past_events, upcoming_events: @upcoming_events, show_host: true %>

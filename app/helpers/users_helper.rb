@@ -1,14 +1,9 @@
 module UsersHelper
-  def display_user_events_header(events)
-    host_username = event_host(@events.first)
-    if current_user && host_username == current_user.username
-     "Your events"
+  def display_user_header(user, type)
+    if current_user && user.username == current_user.username
+     "Your #{type} events"
     else
-     "#{pretty_username(host_username)}'s events"
+     "#{pretty_string(user.username)}'s #{type} events"
     end
-  end
-
-  def pretty_username(username)
-    username.capitalize
   end
 end

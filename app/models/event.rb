@@ -5,6 +5,7 @@ class Event < ApplicationRecord
 
   validates :title, presence: true, length: { in: 10..50 }
   validates :description, presence: true, length: { in: 50..500 }
+  validates :location, presence: true, length: { in: 10..70 }
   validates :date, presence: true
   validates :date, comparison: { greater_than: Date.today, message: "must be greater than today e.g. #{Date.today + 1.day}" }
   validates :date, comparison: { less_than: 125.years.from_now.to_date, message: "must be less than 125 years from now" }

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/@:username", to: "users#show", constraints: { username: /[a-zA-Z0-9]+/ }, as: "user"
   get "/@:username/events/:id", to: "events#show", as: "user_event"
   post "/@:username/events/:id/attend_event", to: "event_attendings#create", as: "attend_event"
+  delete "/@:username/events/:id/attend_event", to: "event_attendings#destroy", as: "leave_event"
 
   resources :events, only: [ :new, :create, :index ]
 

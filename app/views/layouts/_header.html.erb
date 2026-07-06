@@ -5,7 +5,7 @@
         <% if user_signed_in? %>
         <li><%= link_to "New Event", new_event_path %></li>
         <li>
-          <%= pretty_username(current_user.username) %>
+          <%= pretty_string(current_user.username) %>
           <ul>
             <li><%= link_to "Your profile", user_path(current_user.username) %></li>
             <li><%= button_to "Sign out", signout_path, method: :delete, data: { turbo: false } %></li>

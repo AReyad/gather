@@ -22,4 +22,17 @@ module EventsHelper
   def user_can_invite?(event)
     event.private_event? && current_user.id == event.host_id
   end
+
+  def display_kick_button(attendee)
+    if @event.host_id == current_user.id && attendee.id != @event.host_id
+       button_to "Kick", leave_event_path, method: :delete, params: { user_to_kick: attendee.id }, class: "kick-button",
+          data: { turbo_confirm: "Are you sure you want to kick #{pretty_string(attendee.username)}?" }
+    end
+  end
+
+  def display_attendee(attendee)
+   return "#{pretty_string(attendee.username)} (HOST)" if @event.host_id == attendee.id
+
+   pretty_string(attendee.username)
+  end
 end

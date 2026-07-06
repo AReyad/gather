@@ -21,6 +21,9 @@
 </div>
 <div class="event-attendees">
   <% @event.attendees.each do |attendee| %>
-  <p><%= attendee.username %></p>
+  </div class="event-attendee">
+    <p><%= display_attendee(attendee) %></p>
+      <%= display_kick_button(attendee) %>
+  </div>
   <% end %>
 </div>

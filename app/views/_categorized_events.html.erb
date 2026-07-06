@@ -1,0 +1,12 @@
+<div class="events-navigation">
+  <%= link_to "Upcoming Events", "#upcoming-events" %>
+  <%= link_to "Past Events", "#past-events" %>
+</div>
+<div id="upcoming-events">
+  <h3>Upcoming events</h3>
+  <%= render "/events", events: upcoming_events %>
+</div>
+<div id="past-events">
+  <h3>Past events</h3>
+  <%= render "/events", events: past_events %>
+</div>

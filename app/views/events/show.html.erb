@@ -1,4 +1,5 @@
 <div class="event-body">
+  <div><strong><%= pretty_string(@event.privacy) %></strong></div>
   <h2><%= @event.title %></h2>
   <p><%= @event.description %></p>
 </div>
@@ -6,9 +7,17 @@
   <div class="event-date"><%= @event.date %></div>
   <div class="event-time"><%= @event.time %></div>
   <div class="event-location"><%= @event.location %></div>
-  <div class="event-date"><%= @event.date %></div>
-  <%= link_to pretty_username(@user.username), user_path(@user.username) %>
-  <%= attend_event_button %>
+  <%= link_to pretty_string(@user.username), user_path(@user.username) %>
+  <% if user_can_invite?(@event) %>
+  <div class="invite-user">
+    <%= form_with url: attend_event_path, method: :post do |form |%>
+        <%= form.text_field :invite_user %>
+        <%= form.submit value: "Invite" %>
+    <% end %>
+  </div>
+  <% else %>
+  <%= attend_event_button(@event) %>
+  <% end %>
 </div>
 <div class="event-attendees">
   <% @event.attendees.each do |attendee| %>

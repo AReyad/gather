@@ -26,7 +26,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.expect(event: [ :title, :description, :date, :time ])
+    params.expect(event: [ :title, :description, :date, :time, :location, :privacy ])
   end
 
   def set_event

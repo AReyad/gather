@@ -2,15 +2,14 @@ class EventAttendingsController < ApplicationController
   before_action :set_event, only: [ :create, :destroy ]
   before_action :authenticate_user!, only: [ :create, :destroy  ]
   before_action :authorize_user, only: [ :create ]
+  after_action :redirect_to_event, only: [ :create, :destroy ]
 
   def create
     EventAttending.create(attending_event_params)
-    redirect_to user_event_path(params[:username], params[:id])
   end
 
   def destroy
     @event.attendees.destroy(kick_user_params)
-    redirect_to user_event_path(params[:username], params[:id])
   end
 
   private
@@ -20,7 +19,7 @@ class EventAttendingsController < ApplicationController
   end
 
   def attending_event_params
-    if @event.private_event? && event_host?
+    if event_host?
       user_id = User.find_by!(username: params[:invite_user]).id
     elsif @event.public_event?
       user_id = current_user.id
@@ -30,7 +29,7 @@ class EventAttendingsController < ApplicationController
 
   def kick_user_params
     if event_host? && params[:user_to_kick].to_i == @event.host_id
-      redirect_to user_event_path(@event.host_id, @event.id)
+      redirect_to_event
     elsif event_host?
       params[:user_to_kick]
     else
@@ -46,5 +45,9 @@ class EventAttendingsController < ApplicationController
 
   def event_host?
     current_user.id == @event.host_id
+  end
+
+  def redirect_to_event
+      redirect_to user_event_path(@event.host_id, @event.id)
   end
 end

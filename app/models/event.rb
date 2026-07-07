@@ -3,9 +3,9 @@ class Event < ApplicationRecord
   has_many :event_attendings, foreign_key: :attended_event_id
   has_many :attendees, through: :event_attendings, source: :event_attendee
 
-  validates :title, presence: true, length: { in: EventValidations::MIN_TITLE_LENGTH..EventValidations::MIN_TITLE_LENGTH }
-  validates :description, presence: true, length: { in: EventValidations::MIN_DESCRIPTION_LENGTH..EventValidations::MIN_DESCRIPTION_LENGTH }
-  validates :location, presence: true, length: { in: EventValidations::MIN_LOCATION_LENGTH ..EventValidations::MIN_LOCATION_LENGTH  }
+  validates :title, presence: true, length: { in: EventValidations::MIN_TITLE_LENGTH..EventValidations::MAX_TITLE_LENGTH }
+  validates :description, presence: true, length: { in: EventValidations::MIN_DESCRIPTION_LENGTH..EventValidations::MAX_DESCRIPTION_LENGTH }
+  validates :location, presence: true, length: { in: EventValidations::MIN_LOCATION_LENGTH ..EventValidations::MAX_LOCATION_LENGTH  }
   validates :date, presence: true
   validates :date, comparison: { greater_than_or_equal_to: EventValidations.min_date, message: "must be greater than today e.g. #{EventValidations.min_date}" }
   validates :date, comparison: { less_than_or_equal_to: EventValidations.max_date, message: "must be less than #{EventValidations.max_date} years from now" }

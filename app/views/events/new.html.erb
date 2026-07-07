@@ -1,43 +1,5 @@
+<div class="form">
 <h2>Create a new event</h2>
   <%= render "users/shared/error_messages", resource: @event %>
-<%= form_with model: @event do |form|%>
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, placeholder: "Rails Workshop 2026", required: true,
-        minlength: EventValidations::MIN_TITLE_LENGTH, maxlength: EventValidations::MAX_TITLE_LENGTH %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description, placeholder: "Deep dive into rails with our worksh...",
-        required: true, minlength: EventValidations::MIN_DESCRIPTION_LENGTH, maxlength: EventValidations::MAX_DESCRIPTION_LENGTH %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_field :date, required: true, value: EventValidations.min_date, min: EventValidations.min_date, max: EventValidations.max_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :time %>
-    <%= form.time_field :time, value: "18:00", required: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location, placeholder: "San Francisco, CA", required: true,
-        minlength: EventValidations::MIN_LOCATION_LENGTH, maxlength: EventValidations::MAX_LOCATION_LENGTH %>
-  </div>
-
-  <div class="field">
-    <%= form.label :privacy_public, "Public" %>
-    <%= form.radio_button :privacy, :public, checked: true %>
-    <%= form.label :privacy_private, "Private" %>
-    <%= form.radio_button :privacy, :private %>
-  </div>
-
-  <div class="actions">
-    <%= link_to "Cancel", root_path %>
-    <%= form.submit "Publish event" %>
-  </div>
-<% end %>
+  <%= render "events/event_form", event: @event %>
+</div>

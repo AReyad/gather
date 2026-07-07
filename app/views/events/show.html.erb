@@ -8,15 +8,17 @@
   <div class="event-time"><%= @event.time %></div>
   <div class="event-location"><%= @event.location %></div>
   <%= link_to pretty_string(@user.username), user_path(@user.username) %>
-  <% if user_can_invite?(@event) %>
-  <div class="invite-user">
-    <%= form_with url: attend_event_path, method: :post do |form |%>
-        <%= form.text_field :invite_user %>
-        <%= form.submit value: "Invite" %>
-    <% end %>
-  </div>
+  <div class="event-control-button">
+  <% if user_can_invite? %>
+    <div class="invite-user">
+        <%= form_with url: attend_event_path, method: :post do |form |%>
+            <%= form.text_field :invite_user %>
+            <%= form.submit value: "Invite" %>
+        <% end %>
+    </div>
   <% else %>
-  <%= attend_event_button(@event) %>
+    <%= attend_event_button(@event) %>
+  </div>
   <% end %>
 </div>
 <div class="event-attendees">

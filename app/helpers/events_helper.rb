@@ -8,7 +8,7 @@ module EventsHelper
   end
 
   def attend_event_button(event)
-    return "Sign in to attend" unless user_signed_in?
+    return link_to "Sign in to attend", signin_path unless user_signed_in?
 
     if event.attendees.include?(current_user)
       button_to "Leave Event", leave_event_path, method: :delete
@@ -19,12 +19,12 @@ module EventsHelper
     end
   end
 
-  def user_can_invite?(event)
-    event.private_event? && current_user.id == event.host_id
+  def user_can_invite?
+    event_host?
   end
 
   def display_kick_button(attendee)
-    if @event.host_id == current_user.id && attendee.id != @event.host_id
+    if event_host? && attendee.id != @event.host_id
        button_to "Kick", leave_event_path, method: :delete, params: { user_to_kick: attendee.id }, class: "kick-button",
           data: { turbo_confirm: "Are you sure you want to kick #{pretty_string(attendee.username)}?" }
     end
@@ -34,5 +34,9 @@ module EventsHelper
    return "#{pretty_string(attendee.username)} (HOST)" if @event.host_id == attendee.id
 
    pretty_string(attendee.username)
+  end
+
+  def event_host?
+    current_user && current_user.id == @event.host_id
   end
 end

@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
         redirect_to signin_path
       end
     end
+
+  def event_host?
+    current_user.id == @event.host_id
+  end
 end

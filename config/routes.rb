@@ -11,10 +11,11 @@ Rails.application.routes.draw do
 
   get "/@:username", to: "users#show", constraints: { username: /[a-zA-Z0-9]+/ }, as: "user"
   get "/@:username/events/:id", to: "events#show", as: "user_event"
+  get "/@:username/events/:id/edit", to: "events#edit", as: "edit_user_event"
   post "/@:username/events/:id/attend_event", to: "event_attendings#create", as: "attend_event"
   delete "/@:username/events/:id/attend_event", to: "event_attendings#destroy", as: "leave_event"
 
-  resources :events, only: [ :new, :create, :index ]
+  resources :events, only: [ :new, :create ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

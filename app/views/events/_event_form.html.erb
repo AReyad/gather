@@ -1,4 +1,4 @@
-<%= form_with model: event do |form|%>
+<%= form_with model: event, url: url do |form|%>
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, placeholder: "Rails Workshop 2026", required: true,
@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.date_field :date, required: true, value: EventValidations.min_date, min: EventValidations.min_date, max: EventValidations.max_date %>
+    <%= form.date_field :date, required: true, value: event.date || EventValidations.min_date, min: EventValidations.min_date, max: EventValidations.max_date %>
   </div>
 
   <div class="field">
     <%= form.label :time %>
-    <%= form.time_field :time, value: "18:00", required: true %>
+    <%= form.time_field :time, value: event.time || "18:00", required: true %>
   </div>
 
   <div class="field">

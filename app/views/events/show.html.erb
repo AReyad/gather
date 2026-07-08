@@ -1,7 +1,7 @@
 <div class="links">
   <%= link_to "Back to events", root_path %>
   <% if user_authorized? %>
-  <%= link_to "Edit event", edit_user_event_path(@user.username, @event.id) %>
+  <%= link_to "Edit event", edit_user_event_path %>
   <% end %>
 </div>
 <div class="event-body">

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users, skip: :all
 
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   delete "/@:username/events/:id/kick_user", to: "event_attendings#destroy", as: "kick_user"
   delete "/@:username/events/:id/delete", to: "events#destroy", as: "delete_event"
 
-  resources :events, only: [ :new, :create ]
+  resources :events, only: %i[new create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

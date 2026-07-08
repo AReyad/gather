@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EventValidations
   MIN_TITLE_LENGTH = 10
   MAX_TITLE_LENGTH = 50
@@ -7,7 +9,7 @@ module EventValidations
   MAX_LOCATION_LENGTH = 30
 
   def self.min_date
-    Date.today + 1.day
+    Time.zone.today + 1.day
   end
 
   def self.max_date

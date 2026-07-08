@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module EventsHelper
   def display_time(time)
-    if time > "11:59"
-      time += " PM"
+    time + if time > "11:59"
+      " PM"
     else
-      time += " AM"
+      " AM"
     end
   end
 
@@ -27,10 +29,11 @@ module EventsHelper
 
   def display_kick_button(attendee)
     return if @event.past?
-    if event_host? && attendee.id != @event.host_id
-       button_to "Kick", kick_user_path, method: :delete, params: { user_to_kick: attendee.id }, class: "kick-button",
-          data: { turbo_confirm: "Are you sure you want to kick #{pretty_string(attendee.username)}?" }
-    end
+
+    return unless event_host? && attendee.id != @event.host_id
+
+    button_to "Kick", kick_user_path, method: :delete, params: { user_to_kick: attendee.id }, class: "kick-button",
+                                      data: { turbo_confirm: "Are you sure you want to kick #{pretty_string(attendee.username)}?" }
   end
 
   def display_attendee(attendee)

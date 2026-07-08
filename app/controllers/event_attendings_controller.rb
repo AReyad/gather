@@ -3,7 +3,7 @@
 class EventAttendingsController < ApplicationController
   before_action :set_event, only: %i[create destroy]
   before_action :authenticate_user!, only: %i[create destroy]
-  before_action :authorize_user, only: [ :create ]
+  before_action :authorize_attend, only: [ :create ]
   before_action :check_event_date, only: %i[create destroy]
 
   def create
@@ -41,10 +41,10 @@ class EventAttendingsController < ApplicationController
     end
   end
 
-  def authorize_user
+  def authorize_attend
     return if @event.public_event? || event_host?
 
-      redirect_to root_path and return
+    redirect_to root_path and return
   end
 
   def redirect_to_event

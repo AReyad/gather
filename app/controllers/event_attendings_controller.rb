@@ -2,6 +2,7 @@ class EventAttendingsController < ApplicationController
   before_action :set_event, only: [ :create, :destroy ]
   before_action :authenticate_user!, only: [ :create, :destroy  ]
   before_action :authorize_user, only: [ :create ]
+  before_action :check_event_date, only: [ :create, :destroy  ]
 
   def create
     EventAttending.create(attending_event_params)
@@ -30,7 +31,7 @@ class EventAttendingsController < ApplicationController
 
   def kick_user_params
     if event_host? && params[:user_to_kick].to_i == @event.host_id
-      redirect_to_event and return
+      redirect_to root_path  and return
     elsif event_host?
       params[:user_to_kick]
     else

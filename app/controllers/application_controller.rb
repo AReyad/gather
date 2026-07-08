@@ -19,6 +19,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+  def check_event_date
+    if @event.past?
+      redirect_to root_path and return
+    end
+  end
+
   def event_host?
     current_user.id == @event.host_id
   end

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.date_field :date, required: true, value: event.date || EventValidations.min_date, min: EventValidations.min_date, max: EventValidations.max_date %>
+    <%= form.date_field :date, required: true, value: event.date || EventValidations.min_date, min: EventValidations.min_date - 1.day, max: EventValidations.max_date %>
   </div>
 
   <div class="field">

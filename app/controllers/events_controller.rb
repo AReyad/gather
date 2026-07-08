@@ -1,7 +1,8 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
-  before_action :set_event, only: [ :show, :edit, :update ]
-  before_action :authorize_user, only: [ :edit, :update ]
+  before_action :set_event, only: [ :show, :edit, :update, :destroy ]
+  before_action :authorize_user, only: [ :edit, :update, :destroy ]
+  before_action :check_event_date, only: [ :edit, :update, :destroy ]
   def index
     @upcoming_events = Event.includes(:host).upcoming
     @past_events = Event.includes(:host).past
@@ -28,6 +29,16 @@ class EventsController < ApplicationController
   end
 
   def update
+    if @event.update(event_params)
+      redirect_to user_event_path(current_user.username, @event.id)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to root_path
   end
 
   private

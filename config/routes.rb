@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   get "/@:username", to: "users#show", constraints: { username: /[a-zA-Z0-9]+/ }, as: "user"
   get "/@:username/events/:id", to: "events#show", as: "user_event"
   get "/@:username/events/:id/edit", to: "events#edit", as: "edit_user_event"
+  patch "/@:username/events/:id/edit", to: "events#update"
+  put "/@:username/events/:id/edit", to: "events#update"
   post "/@:username/events/:id/attend_event", to: "event_attendings#create", as: "attend_event"
-  delete "/@:username/events/:id/attend_event", to: "event_attendings#destroy", as: "leave_event"
+  delete "/@:username/events/:id/leave_event", to: "event_attendings#destroy", as: "leave_event"
+  delete "/@:username/events/:id/kick_user", to: "event_attendings#destroy", as: "kick_user"
+  delete "/@:username/events/:id/delete", to: "events#destroy", as: "delete_event"
 
   resources :events, only: [ :new, :create ]
 

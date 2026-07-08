@@ -1,5 +1,5 @@
 <div class="form">
 <h2>Create a new event</h2>
   <%= render "users/shared/error_messages", resource: @event %>
-  <%= render "events/event_form", event: @event %>
+  <%= render "events/event_form", event: @event, url: events_path %>
 </div>

@@ -16,4 +16,8 @@ class Event < ApplicationRecord
   default_scope { order(created_at: :desc) }
   scope :past, -> { where("date < ?", Date.today) || where("date == ?", Date.today).and(where("time < ?", Time.current.strftime("%H:%M"))) }
   scope :upcoming, -> { where("date > ?", Date.today) || where("date >= ?", Date.today).and(where("time > ?", Time.current.strftime("%H:%M"))) }
+
+  def past?
+    date < Date.today || (date == Date.today && time < Time.current.strftime("%H:%M"))
+  end
 end

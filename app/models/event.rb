@@ -14,10 +14,10 @@ class Event < ApplicationRecord
   enum :privacy, [ :public, :private ], default: :public, suffix: :event
 
   default_scope { order(created_at: :desc) }
-  scope :past, -> { where("date < ?", Date.today) || where("date == ?", Date.today).and(where("time < ?", Time.current.strftime("%H:%M"))) }
-  scope :upcoming, -> { where("date > ?", Date.today) || where("date >= ?", Date.today).and(where("time > ?", Time.current.strftime("%H:%M"))) }
+  scope :past, -> { where("date < ?", Date.today).or(where("date = ?", Date.today).and(where("time < ?", Time.now.strftime("%H:%M")))) }
+  scope :upcoming, -> { where("date > ?", Date.today).or(where("date = ?", Date.today).and(where("time > ?", Time.now.strftime("%H:%M")))) }
 
   def past?
-    date < Date.today || (date == Date.today && time < Time.current.strftime("%H:%M"))
+     date < Date.today || (date == Date.today && time < Time.now.strftime("%H:%M"))
   end
 end

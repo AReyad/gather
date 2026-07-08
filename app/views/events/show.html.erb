@@ -1,3 +1,9 @@
+<div class="links">
+  <%= link_to "Back to events", root_path %>
+  <% if user_authorized? %>
+  <%= link_to "Edit event", edit_user_event_path(@user.username, @event.id) %>
+  <% end %>
+</div>
 <div class="event-body">
   <div><strong><%= pretty_string(@event.privacy) %></strong></div>
   <h2><%= @event.title %></h2>
@@ -9,7 +15,7 @@
   <div class="event-location"><%= @event.location %></div>
   <%= link_to pretty_string(@user.username), user_path(@user.username) %>
   <div class="event-control-button">
-  <% if user_can_invite? %>
+  <% if user_authorized? %>
     <div class="invite-user">
         <%= form_with url: attend_event_path, method: :post do |form |%>
             <%= form.text_field :invite_user %>

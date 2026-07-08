@@ -21,7 +21,7 @@ module EventsHelper
     end
   end
 
-  def user_can_invite?
+  def user_authorized?
     event_host? && !@event.past?
   end
 

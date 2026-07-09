@@ -1,9 +1,9 @@
 <% if params[:events_type] == "attending_events" %>
   <h3><%= display_user_header(@user, "Attending") %></h3>
   <%= link_to "View Hosted events", user_path(events_type: "hosted_events") %>
-  <%= render '/categorized_events', upcoming_events: @upcoming_events, past_events: @past_events %>
+  <%= render '/events/categorized_events', upcoming_events: @upcoming_events, past_events: @past_events %>
 <% else %>
   <h3><%= display_user_header(@user, "Hosted") %></h3>
   <%= link_to "View Attending events", user_path(events_type: "attending_events") %>
-    <%= render '/categorized_events', upcoming_events: @upcoming_events, past_events: @past_events %>
+    <%= render '/events/categorized_events', upcoming_events: @upcoming_events, past_events: @past_events %>
 <% end %>

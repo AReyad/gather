@@ -5,7 +5,7 @@ module UsersHelper
     if current_user && user.username == current_user.username
      "Your #{type} events"
     else
-     "#{pretty_string(user.username)}'s #{type} events"
+     "#{user.username}'s #{type} events"
     end
   end
 end

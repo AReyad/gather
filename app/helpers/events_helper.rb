@@ -23,26 +23,26 @@ module EventsHelper
     end
   end
 
-  def user_authorized?
-    event_host? && !@event.past?
+  def user_authorized?(event)
+    event_host?(event) && !event.past?
   end
 
-  def display_kick_button(attendee)
-    return if @event.past?
+  def display_kick_button(attendee, event)
+    return if event.past?
 
-    return unless event_host? && attendee.id != @event.host_id
+    return unless event_host?(event) && attendee.id != event.host_id
 
     button_to "Kick", kick_user_path, method: :delete, params: { user_to_kick: attendee.id }, class: "kick-button",
                                       data: { turbo_confirm: "Are you sure you want to kick #{pretty_string(attendee.username)}?" }
   end
 
-  def display_attendee(attendee)
-   return "#{pretty_string(attendee.username)} (HOST)" if @event.host_id == attendee.id
+  def display_attendee(attendee, event)
+   return "#{attendee.username} (HOST)" if event.host_id == attendee.id
 
-   pretty_string(attendee.username)
+   attendee.username
   end
 
-  def event_host?
-    current_user && current_user.id == @event.host_id
+  def event_host?(event)
+    current_user && current_user.id == event.host_id
   end
 end

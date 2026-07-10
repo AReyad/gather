@@ -1,12 +1,12 @@
 <div class="events-navigation">
-  <%= link_to "Upcoming Events", "#upcoming-events" %>
-  <%= link_to "Past Events", "#past-events" %>
+  <%= link_to "Upcoming(#{upcoming_events.count})", "#upcoming-events", data: { turbo: false } %>
+  <%= link_to "Past(#{past_events.count})", "#past-events", data: { turbo: false } %>
 </div>
-<div id="upcoming-events">
-  <h3>Upcoming events</h3>
-  <%= render "/events/events", events: upcoming_events %>
-</div>
-<div id="past-events">
-  <h3>Past events</h3>
-  <%= render "/events/events", events: past_events %>
-</div>
+<section id="upcoming-events" class="events-category-wrapper">
+  <h3>Upcoming</h3>
+  <%= render "/events/events", events: upcoming_events, hide: hide_desc %>
+</section>
+<section id="past-events" class="events-category-wrapper">
+  <h3>Past</h3>
+  <%= render "/events/events", events: past_events, hide: hide_desc %>
+</section>

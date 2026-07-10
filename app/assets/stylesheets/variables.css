@@ -1,0 +1,32 @@
+:root {
+--color-cream-50: rgb(245, 240, 232);
+--color-cream-100: rgb(237, 231, 217);
+--color-brown-900: rgb(44, 30, 15);
+--color-brown-700: rgb(124, 74, 30);
+--color-brown-600: rgb(160, 98, 42);
+--color-brown-500: rgb(138, 106, 74);
+--color-brown-300: rgb(145, 122, 100);
+--color-brown-alpha-150: rgba(100, 60, 20, 0.15);
+--color-tan-200: rgb(228, 218, 206);
+--color-tan-100: rgb(232, 224, 208);
+--color-white-50: rgb(253, 248, 240);
+--color-red-600: rgb(185, 64, 64);
+--color-green-800: rgb(22, 101, 52);
+--color-green-710: rgba(22, 101, 52, 0.10);
+--color-green-730: rgba(22, 101, 52, 0.30);
+--color-red-800: rgb(146, 64, 14);
+--color-red-710: rgba(146, 64, 14, 0.10);
+--color-red-730: rgba(146, 64, 14, 0.30);
+
+--font-size: 1rem;
+--fs-s: 0.5rem;
+--fs-md: 0.85rem;
+--fs-l: 1.15rem;
+--fs-xl: 1.35rem;
+--fs-2xl: 1.55rem;
+--fs-3xl: 1.75rem;
+--fs-4xl: 2rem;
+--font-family: "Space Mono", monospace;
+
+--radius-s: 4px;
+}

@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :attending_events, through: :event_attendings, source: :attended_event
 
   validates :username, length: { in: 5..15 }, format: { with: /\A[a-zA-Z0-9]+\z/,
-                                                        message: "only allows letters and numbers e.g. username123" }, presence: true, uniqueness: true
+                                                        message: "only allows letters and numbers." }, presence: true, uniqueness: true
   normalizes :email, with: ->(email) { email.downcase.strip }
   normalizes :username, with: ->(username) { username.downcase.strip }
   devise :database_authenticatable, :registerable,

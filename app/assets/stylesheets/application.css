@@ -8,3 +8,116 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+* {
+  font-family: inherit;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-cream-50)
+}
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.button-style {
+  color: var(--color-cream-100);
+  background-color: var(--color-brown-700);
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+}
+
+.button-style.regular {
+  transition: background-color 0.35s, transform 0.15s;
+}
+
+.button-style.regular:hover {
+  background-color: var(--color-brown-600);
+}
+
+.button-style.regular:active {
+  transform: scale(0.95);
+}
+
+.button-style.accent {
+  background-color: var(--color-white-50);
+  color: var(--color-brown-900);
+  border: 1px solid var(--color-brown-alpha-150);
+  transition: border-color 0.35s;
+}
+
+.button-style.accent:hover {
+  border-color: var(--color-brown-300);
+}
+
+.border {
+  height: 1px;
+  background-color: var(--color-brown-alpha-150);
+}
+
+main {
+  padding: 2rem 3rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  color: var(--color-brown-900);
+  font-size: var(--fs-l);
+  text-align: center;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.icon-section {
+  display:flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.icon {
+  width: 13px;
+  height: 13px;
+  color: var(--color-brown-700);
+  font-weight: bold;
+}
+
+.flash.alert {
+  max-width: fit-content;
+  background-color: var(--color-red-710);
+  color: var(--color-red-800);
+  border: 1px solid var(--color-red-730);
+  padding: 1rem;
+  border-radius: var(--radius-s);
+}
+
+.red-label {
+  background-color: var(--color-red-710);
+  color: var(--color-red-800);
+  border: 1px solid var(--color-red-730)
+}
+
+.danger {
+ transition: all 0.35s;
+ cursor: pointer;
+}
+
+.danger:hover {
+  background-color: var(--color-red-600);
+  color: var(--color-white-50)
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--color-cream-100) inset !important;
+}

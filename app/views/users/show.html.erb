@@ -1,9 +1,18 @@
+<% content_for(:title, "gather - " + pretty_string(@user.username) + "'s profile") %>
 <% if params[:events_type] == "attending_events" %>
-  <h3><%= display_user_header(@user, "Attending") %></h3>
-  <%= link_to "View Hosted events", user_path(events_type: "hosted_events") %>
-  <%= render '/events/categorized_events', upcoming_events: @upcoming_events, past_events: @past_events %>
+  <h2 class="page-title capitalize"><%= display_user_header(@user, "Attending") %></h2>
+  <div class="user-events-navigation">
+     <%= link_to "View Hosted events", user_path(events_type: "hosted_events") %>
+  </div>
+  <div class="user-events">
+     <%= render '/events/categorized_events', upcoming_events: @upcoming_events, past_events: @past_events, hide_desc: true  %>
+  </div>
 <% else %>
-  <h3><%= display_user_header(@user, "Hosted") %></h3>
-  <%= link_to "View Attending events", user_path(events_type: "attending_events") %>
-    <%= render '/events/categorized_events', upcoming_events: @upcoming_events, past_events: @past_events %>
+  <h2 class="page-title capitalize"><%= display_user_header(@user, "Hosted") %></h2>
+  <div class="user-events-navigation">
+     <%= link_to "View Attending events", user_path(events_type: "attending_events") %>
+  </div>
+  <div class="user-events">
+    <%= render '/events/categorized_events', upcoming_events: @upcoming_events, past_events: @past_events, hide_desc: true   %>
+  </div>
 <% end %>

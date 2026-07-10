@@ -1,0 +1,325 @@
+.empty-section {
+  color: var(--color-brown-300);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  height: 110px;
+  font-weight: 600;
+}
+
+.event-privacy {
+  display: none;
+  padding: 2px 8px;
+  border-radius: var(--radius-s);
+}
+
+.events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1rem;
+}
+
+.user-events .events {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.user-events .event-card {
+  display: grid;
+  grid-template-columns: 1fr 75px;
+  grid-template-areas: "title privacy"
+                      "info privacy";
+  height: 85px;
+  gap: 0.15rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+.user-events .event-title {
+  grid-area: title;
+}
+
+.user-events .event-info {
+  grid-area: info;
+  display: flex;
+  gap: 1rem;
+  border: none;
+  padding-top: 0;
+}
+
+.user-events .event-privacy {
+  grid-area: privacy;
+  display: block;
+  height: 25px;
+  text-align: center;
+}
+
+.event-privacy[data-privacy="private"] {
+  background-color: var(--color-red-710);
+  color: var(--color-red-800);
+  border: 1px solid var(--color-red-730)
+}
+
+.event-privacy[data-privacy="public"] {
+  background-color: var(--color-green-710);
+  color: var(--color-green-800);
+  border: 1px solid var(--color-green-730);
+}
+
+.event-card, .empty-section {
+  font-size: var(--fs-md);
+  border: 1px solid var(--color-brown-alpha-150);
+  border-radius: var(--radius-s);
+}
+
+.event-card {
+  background-color: var(--color-cream-100);
+  padding: 1.5rem 1.5rem 0.5rem;
+  flex-direction: column;
+  gap: 1rem;
+  transition: border-color 0.25s;
+  height: 180px;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+}
+
+.event-title {
+  font-size: var(--font-size);
+  color: var(--color-brown-900);
+  transition: color 0.25s;
+}
+
+.event-card:hover {
+  border-color: var(--color-brown-300);
+}
+
+.event-card:hover .event-title {
+  color: var(--color-brown-600);
+}
+
+.event-info {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--color-brown-alpha-150);
+}
+
+.event-description, .event-info {
+  color: var(--color-brown-700);
+  font-size: calc(var(--font-size) - 4px);
+}
+
+.truncate {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  line-height: 1.3;
+  overflow: hidden;
+  max-height: 30px;
+}
+
+.events-navigation {
+  border-bottom: 1px solid var(--color-brown-alpha-150);
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.events-navigation a, .user-events-navigation a {
+  color: var(--color-brown-500);
+  margin-right: 1rem;
+  text-decoration: underline;
+  transition: color 0.15s ease-in-out;
+}
+
+.events-navigation a:hover, .events-navigation a:active, .user-events-navigation a:active, .user-events-navigation a:hover {
+  color: var(--color-brown-900);
+}
+
+.user-events-navigation {
+  text-align: center;
+}
+
+.user-events-navigation a {
+  margin: 0;
+}
+
+.events-category-wrapper > h3 {
+  color: var(--color-brown-500);
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  font-size: var(--fs-md);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.events-category-wrapper#past-events{
+  padding-top: 2rem;
+}
+
+.event-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "links links"
+                        "body card"
+                        "attendees blank";
+  max-width: 950px;
+  color: var(--color-brown-900)
+}
+
+.event .event-body {
+  grid-area: body;
+}
+
+.event-links {
+  display: flex;
+  justify-content: space-between;
+  grid-area: links;
+  margin-bottom: 2rem;
+}
+
+.event-links > a {
+  color: var(--color-brown-500);
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+
+.event .event-privacy {
+  display: block;
+  max-width: fit-content;
+  margin-bottom: 1rem;
+}
+
+.event h2 {
+  font-size: var(--fs-4xl);
+  margin-bottom: 1rem;
+}
+
+.event-body p {
+  color: var(--color-brown-500);
+}
+
+.event-attendees {
+  grid-area: attendees;
+}
+
+.event .event-details {
+  justify-self: end;
+  padding: 1.5rem;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border: 1px solid var(--color-brown-alpha-150);
+  border-radius: var(--radius-s);
+  margin-left: 1rem;
+}
+
+.event-details a {
+  color: var(--color-brown-900);
+  font-weight: 600;
+  transition: color 0.15s;
+  text-decoration: underline;
+}
+
+.event-details a:hover {
+  color: var(--color-brown-700);
+}
+
+.event-details span {
+  color: var(--color-brown-500);
+  font-size: var(--fs-md);
+}
+
+.event-details form.button_to {
+  display: flex;
+}
+
+.event-details form.button_to > button {
+  border: none;
+  flex: 1;
+}
+
+.event-details .event-host {
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-brown-alpha-150);
+  text-align: center;
+}
+
+main:has(.event) {
+  align-items: center;
+}
+
+.event-button {
+  padding: 0.65rem 1rem;
+  text-align: center;
+  border-radius: var(--radius-s)
+}
+
+.event-attendees {
+  border: 1px solid var(--color-brown-alpha-150);
+  border-radius: var(--radius-s);
+  margin-top: 1rem;
+}
+
+.event-attendees-padding {
+  padding: 0.75rem 1.5rem;
+}
+
+.event-attendees > h3, .event-attendees > div:not(:last-child) {
+  border-bottom: 1px solid var(--color-brown-alpha-150);
+}
+
+.event-attendee, .invite-user form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.kick-button {
+  padding: 0.25rem;
+  border-radius: var(--radius-s);
+}
+
+.invite-user input[type="text"] {
+  background-color: var(--color-cream-100) !important;
+  border: 1px solid var(--color-brown-alpha-150);
+  border-radius: var(--radius-s);
+  padding: 0.5rem;
+  flex: 1;
+}
+
+.invite-user input[type="text"]:focus {
+  border-color: var(--color-brown-700);
+  outline-color: var(--color-brown-700);
+  background-color: var(--color-cream-100);
+}
+
+.invite-user form {
+  position: relative;
+}
+
+.invite-user input[type="submit"] {
+  position: absolute;
+  right: 5px;
+  top: -5px;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+  color: var(--color-brown-700);
+  cursor: pointer;
+  transition: color, transform, 0.15s;
+}
+
+.invite-user input[type="submit"]:active {
+  transform: scale(1.2);
+}
+
+.invite-user input[type="submit"]:hover {
+  color: var(--color-brown-900);
+}

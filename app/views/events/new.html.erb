@@ -1,5 +1,8 @@
-<div class="form">
-<h2>Create a new event</h2>
-  <%= render "users/shared/error_messages", resource: @event %>
-  <%= render "events/event_form", event: @event, url: events_path %>
+<% content_for(:title, "gather - New event") %>
+<div class="form-wrapper">
+  <h2>Create a new event</h2>
+  <div class="form">
+    <%= render "users/shared/error_messages", resource: @event %>
+    <%= render "events/event_form", event: @event, url: events_path %>
+  </div>
 </div>

@@ -1,0 +1,183 @@
+.form-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-wrapper h2 {
+  color: var(--color-brown-900);
+}
+
+.form, .form input, .form textarea, .actions a {
+  background-color: var(--color-cream-100);
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-brown-alpha-150);
+}
+
+.form, ::placeholder, .actions a {
+  color: var(--color-brown-700);
+}
+
+.field > label, .field .label {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-size: var(--fs-md);
+}
+
+.form {
+  padding: 2rem;
+}
+
+.field.description > textarea {
+  min-height: 105px;
+  resize: none;
+}
+
+::placeholder {
+  opacity: 50%
+}
+
+.form input, .form textarea, .actions a, .delete-button {
+  padding: 0.5rem;
+  border: 1px solid var(--color-brown-alpha-150);
+}
+
+.form input:focus, .form textarea:focus {
+  outline-color: var(--color-brown-700);
+}
+
+.form .field:not(.no-flex) {
+  display: flex;
+  flex-direction: column;
+  max-width: 850px;
+  margin-bottom: 1rem;
+}
+
+.form input {
+  max-width: 750px;
+}
+
+.form.user .field:not(.no-flex) input {
+  min-width: 450px;
+}
+
+.form.user .actions {
+  margin: 1rem 0;
+}
+
+.form.user p {
+  justify-self: center;
+}
+
+.form.user a {
+  color: var(--color-brown-900);
+  font-weight: 600;
+  text-decoration: underline;
+  transition: opacity 0.25s;
+}
+
+.form.user a:hover {
+  opacity: 0.75;
+}
+
+.date-time, .actions, form.button_to {
+  display: flex;
+  gap: 1rem;
+}
+
+.date-time > * {
+  flex: 1;
+}
+
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "public private"
+                       "description description";
+  column-gap: 1rem;
+  row-gap: 0.25rem;
+
+}
+
+.radio-group input[type="radio"] {
+  appearance: none;
+  display: none;
+}
+
+.radio-group label {
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--color-brown-alpha-150);
+  transition: all 0.10s ease-in-out;
+  cursor: pointer;
+}
+
+.radio-group label:hover {
+  color: var(--color-brown-900);
+  border-color: var(--color-brown-900);
+}
+
+.radio-group input[type="radio"]:checked + label {
+  color: var(--color-cream-100);
+  background-color: var(--color-brown-700);
+}
+
+.private.description, .public.description {
+  font-size: var(--fs-md);
+  opacity: 95%;
+  display: none;
+  grid-area: description;
+}
+
+input[type="radio"]:checked.private-event ~ .private.description {
+  display: block;
+}
+
+input[type="radio"]:checked.public-event ~ .public.description {
+  display: block;
+}
+
+.actions {
+  margin-top: 2.5rem;
+}
+
+.actions > * , form.button_to .delete-button{
+  flex: 1;
+  text-align: center;
+}
+
+.actions .button-style.regular {
+ background-color: var(--color-brown-700);
+ transition: background-color 0.15s;
+}
+
+.actions .button-style.regular:hover {
+ background-color: var(--color-brown-600);
+}
+
+.delete-button {
+  background-color: var(--color-cream-100);
+  color: var(--color-red-600);
+  margin-top: 1.5rem;
+  border-radius: var(--radius-s);
+}
+
+#error_explanation * {
+  color: red;
+}
+
+.field > .field_with_errors input {
+  border: 1px solid red;
+}
+
+input[type="checkbox"] {
+  position: relative;
+  top: 2px;
+}
+
+input[type="checkbox"]:checked {
+  accent-color: var(--color-brown-600);
+}

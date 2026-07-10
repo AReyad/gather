@@ -1,0 +1,77 @@
+header {
+  padding: 1rem;
+  background-color: var(--color-white-50)
+}
+
+h1 {
+  font-size: var(--fs-l);
+}
+
+h1 a {
+  color: var(--color-brown-900);
+  transition: color 0.25s;
+}
+
+h1 a:hover {
+  color: var(--color-brown-700);
+}
+
+header .nav-bar, header .nav-bar > ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-bar-user {
+  position: relative;
+  cursor: pointer;
+}
+
+.user-controls {
+  background-color: var(--color-cream-100);
+  visibility: hidden;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 55px;
+  border: 1px solid var(--color-brown-alpha-150);
+  border-radius: var(--radius-s);
+  opacity: 0;
+  flex-direction: column;
+  transition: visibility 0.50s, opacity 0.35s;
+}
+
+.nav-bar-user:hover > .user-controls {
+  visibility: visible;
+  opacity: 1;
+}
+
+.sign-out-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+.user-controls > * {
+  font-size: var(--fs-md);
+  min-width: 150px;
+  padding: 0.65rem 1rem;
+  color: var(--color-brown-900);
+  font-weight: 500;
+  transition: color 0.35s, background-color 0.25s;
+}
+
+.user-controls > .button_to {
+  border-top: 1px solid var(--color-brown-alpha-150);
+  color: var(--color-brown-300);
+}
+
+.user-controls > *:hover {
+  background-color: var(--color-tan-100);
+}
+
+.user-controls > .button_to:hover {
+   color: var(--color-brown-900);
+}

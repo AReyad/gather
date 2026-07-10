@@ -1,20 +1,29 @@
 <header>
-    <h1><%= link_to "gather", root_path %></h1>
-    <nav>
+    <nav class = "nav-bar">
+    <h1><%= link_to "gather", root_path, class: "website-title" %></h1>
       <ul>
         <% if user_signed_in? %>
-        <li><%= link_to "New Event", new_event_path %></li>
-        <li>
-          <%= pretty_string(current_user.username) %>
-          <ul>
-            <li><%= link_to "Your profile", user_path(current_user.username) %></li>
-            <li><%= button_to "Sign out", signout_path, method: :delete, data: { turbo: false } %></li>
-          </ul>
-        </li>
+          <%= link_to new_event_path, class: "button-style regular" do %>
+          <li>New Event</li>
+          <% end %>
+          <div class="nav-bar-user">
+          <li class="button-style accent capitalize">
+            <%= current_user.username %>
+          </li>
+            <div class="user-controls">
+              <%= link_to "Your profile", user_path(current_user.username) %>
+              <%= button_to "Log out", signout_path, method: :delete, data: { turbo: false }, class: "sign-out-btn" %>
+            </div>
+          </div>
         <% else %>
-        <li> <%= link_to "Sign in", signin_path%> </li>
-        <li> <%= link_to "Sign up", signup_path%> </li>
+          <%= link_to signin_path, class: "button-style accent" do %>
+            <li>Sign in</li>
+          <% end %>
+          <%= link_to signup_path, class: "button-style regular" do %>
+          <li>Create an account</li>
+          <% end %>
         <%end %>
       </ul>
     </nav>
 </header>
+<div class="border"></div>

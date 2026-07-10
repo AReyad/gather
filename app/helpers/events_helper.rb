@@ -9,17 +9,17 @@ module EventsHelper
     end
   end
 
-  def attend_event_button(event)
-    return link_to "Sign in to attend", signin_path unless user_signed_in?
+  def attend_event_button(event, class_name)
+    return link_to "Sign in to attend", signin_path, class: class_name unless user_signed_in?
 
     if event.past?
-      content_tag(:p, "Event has ended")
+      content_tag(:p, "Event has ended", class: "event-button red-label")
     elsif event.attendees.include?(current_user)
-      button_to "Leave Event", leave_event_path, method: :delete
+      button_to "Leave Event", leave_event_path, method: :delete, class: "event-button red-label danger"
     elsif event.public_event?
-      button_to "Attend Event", attend_event_path
+      button_to "Attend Event", attend_event_path, class: class_name
     elsif event.private_event?
-      content_tag(:p, "Invitation Required")
+      content_tag(:p, "Invitation Required", class: class_name)
     end
   end
 
@@ -32,7 +32,7 @@ module EventsHelper
 
     return unless event_host?(event) && attendee.id != event.host_id
 
-    button_to "Kick", kick_user_path, method: :delete, params: { user_to_kick: attendee.id }, class: "kick-button",
+    button_to "Kick", kick_user_path, method: :delete, params: { user_to_kick: attendee.id }, class: "kick-button danger red-label",
                                       data: { turbo_confirm: "Are you sure you want to kick #{pretty_string(attendee.username)}?" }
   end
 

@@ -48,6 +48,6 @@ class EventAttendingsController < ApplicationController
   end
 
   def redirect_to_event
-    redirect_to user_event_path(@event.host_id, @event.id) and return
+    redirect_back_or_to(root_path) and return
   end
 end

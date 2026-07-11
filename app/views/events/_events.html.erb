@@ -5,6 +5,7 @@
 <% else %>
   <div class="events">
     <% events.each do |event|%>
+        <% if event_listable?(event) %>
         <%= link_to user_event_path(event.host.username, event.id), class: "event-link" do %>
           <div class="event-card">
             <h3 class="event-title"><%= event.title %></h3>
@@ -17,6 +18,7 @@
             </div>
             <%= tag.div tag.p(event.privacy, class: "capitalize"), class:"event-privacy", data: { privacy: event.privacy } %>
           </div>
+          <% end %>
         <% end %>
     <% end %>
   </div>

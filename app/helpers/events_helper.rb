@@ -42,7 +42,11 @@ module EventsHelper
    attendee.username
   end
 
-  def event_host?(event)
-    current_user && current_user.id == event.host_id
+  # def event_host?(event)
+  # current_user && current_user.id == event.host_id
+  # end
+
+  def event_listable?(event)
+     event_view_authorized?(event)
   end
 end

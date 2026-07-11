@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update destroy]
   before_action :authorize_user, only: %i[edit update destroy]
   before_action :check_event_date, only: %i[edit update destroy]
+  before_action :authorize_private_event_view, only: [ :show ]
 
   def index
     @upcoming_events = Event.includes(:host).upcoming

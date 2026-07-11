@@ -173,6 +173,7 @@
 }
 
 .event .event-body {
+  max-width: 750px;
   grid-area: body;
 }
 

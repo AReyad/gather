@@ -2,7 +2,7 @@
 
 class Event < ApplicationRecord
   belongs_to :host, class_name: "User"
-  has_many :event_attendings, foreign_key: :attended_event_id, dependent: :destroy
+  has_many :event_attendings, -> { order(created_at: :asc) }, foreign_key: :attended_event_id, dependent: :destroy
   has_many :attendees, through: :event_attendings, source: :event_attendee
 
   validates :title, presence: true, length: { in: EventValidations::MIN_TITLE_LENGTH..EventValidations::MAX_TITLE_LENGTH }
@@ -21,10 +21,10 @@ class Event < ApplicationRecord
 
   default_scope { order(created_at: :desc) }
   scope :past, lambda {
- where(date: ...Time.zone.today).or(where(date: Time.zone.today).and(where(time: ...Time.zone.now.strftime("%H:%M"))))
+    where(date: ...Time.zone.today).or(where(date: Time.zone.today).and(where(time: ...Time.zone.now.strftime("%H:%M"))))
   }
   scope :upcoming, lambda {
- where("date > ?", Time.zone.today).or(where(date: Time.zone.today).and(where("time > ?", Time.zone.now.strftime("%H:%M"))))
+    where("date > ?", Time.zone.today).or(where(date: Time.zone.today).and(where("time > ?", Time.zone.now.strftime("%H:%M"))))
   }
 
   def past?

@@ -42,9 +42,7 @@ class EventAttendingsController < ApplicationController
   end
 
   def authorize_attend
-    return if @event.public_event? || event_host?
-
-    redirect_to root_path and return
+    redirect_to root_path and return unless @event.public_event? || event_host?
   end
 
   def redirect_to_event

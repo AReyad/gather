@@ -23,9 +23,7 @@ class ApplicationController < ActionController::Base
     end
 
   def check_event_date
-    return unless @event.past?
-
-      redirect_to root_path and return
+    redirect_to root_path and return if @event.past?
   end
 
   def event_host?

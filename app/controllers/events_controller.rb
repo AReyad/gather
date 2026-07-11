@@ -56,8 +56,6 @@ class EventsController < ApplicationController
   end
 
   def authorize_user
-    return if event_host?
-
-      redirect_to root_path and return
+    redirect_to root_path and return unless event_host?
   end
 end

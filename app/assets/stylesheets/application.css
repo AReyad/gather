@@ -36,11 +36,11 @@ body {
   transition: background-color 0.35s, transform 0.15s;
 }
 
-.button-style.regular:hover {
+.button-style.regular:not(p):hover{
   background-color: var(--color-brown-600);
 }
 
-.button-style.regular:active {
+.button-style.regular:not(p):active {
   transform: scale(0.95);
 }
 

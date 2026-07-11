@@ -11,7 +11,9 @@ class EventsController < ApplicationController
     @past_events = Event.includes(:host).past
   end
 
-  def show; end
+  def show
+    @attendees_count = @event.attendees.count
+  end
 
   def new
     @event = Event.new

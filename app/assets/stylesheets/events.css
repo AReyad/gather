@@ -209,7 +209,6 @@
 }
 
 .event .event-details {
-  justify-self: end;
   padding: 1.5rem;
   min-width: 300px;
   display: flex;
@@ -217,7 +216,7 @@
   gap: 1rem;
   border: 1px solid var(--color-brown-alpha-150);
   border-radius: var(--radius-s);
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 .event-details a {
@@ -271,11 +270,15 @@ main:has(.event) {
   padding: 0.75rem 1.5rem;
 }
 
-.event-attendees > h3, .event-attendees > div:not(:last-child) {
+.attendees-header, .event-attendees > div:not(:last-child) {
   border-bottom: 1px solid var(--color-brown-alpha-150);
 }
 
-.event-attendee, .invite-user form {
+.attendees-header > p {
+  color: var(--color-brown-500)
+}
+
+.event-attendee, .invite-user form, .attendees-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -322,4 +325,18 @@ main:has(.event) {
 
 .invite-user input[type="submit"]:hover {
   color: var(--color-brown-900);
+}
+
+.event-control-button {
+  font-weight: 600;
+}
+
+.event-control-button p {
+  text-align: center;
+  cursor: not-allowed;
+}
+
+.event .icon {
+  width: 16px;
+  height: 16px;
 }

@@ -90,6 +90,23 @@ main {
   font-weight: bold;
 }
 
+.icon.menu {
+  width: 35px;
+  height: 35px;
+  transition: color, scale, 0.15s
+}
+
+button.menu {
+  display: none;
+  background: transparent;
+  border: none;
+}
+
+button.menu:active > .icon.menu {
+  scale: 0.9;
+  color: var(--color-brown-600);
+}
+
 .flash.alert {
   max-width: fit-content;
   background-color: var(--color-red-710);

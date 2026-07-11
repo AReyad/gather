@@ -173,6 +173,14 @@ input[type="radio"]:checked.public-event ~ .public.description {
   border: 1px solid red;
 }
 
+.field_with_errors:has(input) {
+  display: flex;
+}
+
+.field_with_errors input {
+  flex: 1;
+}
+
 input[type="checkbox"] {
   position: relative;
   top: 2px;
@@ -180,4 +188,14 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
   accent-color: var(--color-brown-600);
+}
+
+.user-controls .sign-out-btn {
+  flex: 1;
+  text-align: left;
+  padding: 0.75rem 1rem
+}
+
+.user-controls form {
+  padding: 0;
 }

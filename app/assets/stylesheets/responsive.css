@@ -1,0 +1,127 @@
+@media screen and (max-width: 1115px) {
+  .event .event-details {
+    min-width: fit-content;
+  }
+
+  .event {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .event {
+    grid-template-areas: "links"
+                        "body"
+                        "card"
+                        "attendees";
+    gap: 1rem;
+  }
+
+  .form-wrapper {
+    display: block;
+  }
+
+  .event .event-links {
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+  }
+
+  .event > div {
+    max-height: auto;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .event .event-body > p {
+    max-width: 350px;
+  }
+
+  .event .event-details {
+    margin-left: 0;
+  }
+
+  .form.user .field:not(.no-flex) input, .form input {
+    min-width: auto;
+  }
+
+  .form.user input {
+    flex: 1;
+  }
+
+  .date-time, .actions, .form-wrapper form.button_to {
+    flex-direction: column;
+  }
+
+  .radio-group {
+    grid-template-columns: 1fr;
+    grid-template-areas: "public"
+                         "private"
+                         "description";
+  }
+
+  .form.user {
+    padding: 1rem;
+  }
+
+  #error_explanation * {
+    font-size: var(--fs-md);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .user-events .event-card > .event-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .user-events .event-card {
+    height: 100px;
+    gap: 0.5rem;
+  }
+
+  .user-events .event-card > .event-title {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header > .nav-bar .button-style:not(.user-icon) {
+    display: none;
+  }
+
+  .nav-bar .user-new-event {
+    display: block;
+  }
+
+  button.menu, .icon.menu {
+    display: block;
+  }
+
+  button.menu + .user-controls > a {
+    font-weight: 600;
+  }
+
+  button.menu:hover + .user-controls, .nav-bar-user:hover .user-controls {
+    min-width: 97vw;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .nav-bar-user > .user-controls {
+    right: -10px;
+  }
+
+  button.menu + .user-controls {
+    left: 0;
+  }
+
+  .user-controls > * {
+    min-width: 97vw;
+  }
+
+  main {
+    padding: 0.5rem;
+  }
+}
+
+

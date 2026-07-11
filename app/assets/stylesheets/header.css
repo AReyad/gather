@@ -42,9 +42,14 @@ header .nav-bar, header .nav-bar > ul{
   transition: visibility 0.50s, opacity 0.35s;
 }
 
-.nav-bar-user:hover > .user-controls {
+.nav-bar-user:hover .user-controls {
+  z-index: 100;
   visibility: visible;
   opacity: 1;
+}
+
+.user-controls .user-new-event {
+  display: none;
 }
 
 .sign-out-btn {

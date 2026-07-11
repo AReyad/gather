@@ -328,6 +328,11 @@ main:has(.event) {
   color: var(--color-brown-900);
 }
 
+.invite-user input::placeholder {
+  font-weight: 500;
+  font-size: var(--fs-md)
+}
+
 .event-control-button {
   font-weight: 600;
 }

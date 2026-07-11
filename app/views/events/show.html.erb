@@ -22,7 +22,7 @@
       <% if user_authorized?(@event) %>
         <div class="invite-user">
             <%= form_with url: attend_event_path, method: :post do |form |%>
-                <%= form.text_field :invite_user %>
+                <%= form.text_field :invite_user, placeholder: "Invite a user" %>
                 <%= form.submit value: "→" %>
             <% end %>
         </div>

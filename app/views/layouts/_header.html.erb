@@ -7,8 +7,9 @@
           <li>New Event</li>
           <% end %>
           <div class="nav-bar-user">
-          <li class="button-style accent capitalize">
-            <%= current_user.username %>
+          <li class="button-style accent capitalize user-icon">
+            <p><%= current_user.username %></p>
+             <%= image_tag 'arrow.svg', class: "icon" %>
           </li>
             <div class="user-controls">
               <%= link_to "Your profile", user_path(current_user.username) %>

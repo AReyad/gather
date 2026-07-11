@@ -75,3 +75,17 @@ header .nav-bar, header .nav-bar > ul{
 .user-controls > .button_to:hover {
    color: var(--color-brown-900);
 }
+
+.user-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.30rem;;
+}
+
+.user-icon > .icon {
+  transition: rotate 0.35s ease-out;
+}
+
+.nav-bar-user:hover .icon {
+  rotate: 180deg
+}

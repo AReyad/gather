@@ -28,9 +28,10 @@
 .user-events .event-card {
   display: grid;
   grid-template-columns: 1fr 75px;
+  grid-template-rows: 1fr 1fr;
   grid-template-areas: "title privacy"
                       "info privacy";
-  height: 85px;
+  height: fit-content;
   gap: 0.15rem;
   align-items: center;
   padding: 1rem;
